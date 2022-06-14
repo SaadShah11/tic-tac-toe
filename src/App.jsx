@@ -47,6 +47,7 @@ export default class App extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      selected: null
     };
   }
 
@@ -71,6 +72,7 @@ export default class App extends React.Component {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0,
+      selected: step
     });
   }
 
@@ -85,7 +87,7 @@ export default class App extends React.Component {
         'Go to game start';
       return (
         <li key={move}>
-          <button onClick={() => {this.jumpTo(move)}}>{desc}</button>
+          <button onClick={() => {this.jumpTo(move)}} style={{'fontWeight': this.state.selected === move ? 'bold' : 'normal'}}>{desc}</button>
         </li>
       );
     });
